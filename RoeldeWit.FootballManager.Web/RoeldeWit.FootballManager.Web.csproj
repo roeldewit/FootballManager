@@ -176,6 +176,10 @@
       <Project>{a5054572-e4bd-4ba9-8788-b4871c8174fc}</Project>
       <Name>RoeldeWit.FootballManager.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RoeldeWit.FootballManager.ServiceLayer\RoeldeWit.FootballManager.ServiceLayer.csproj">
+      <Project>{83a92650-3bfe-4396-81b6-3972a276b1e4}</Project>
+      <Name>RoeldeWit.FootballManager.ServiceLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RoeldeWit.FootballManager.SqlDataAccess\RoeldeWit.FootballManager.SqlDataAccess.csproj">
       <Project>{17cdeb96-83e1-4003-8698-79b863a8e69a}</Project>
       <Name>RoeldeWit.FootballManager.SqlDataAccess</Name>
