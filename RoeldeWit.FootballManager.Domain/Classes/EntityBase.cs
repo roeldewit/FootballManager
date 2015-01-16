@@ -1,5 +1,5 @@
 ﻿
-namespace RoeldeWit.FootballManager.Domain
+namespace RoeldeWit.FootballManager.Domain.Classes
 {
     /// <summary>
     /// Base class for entities containing an id
