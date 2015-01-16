@@ -5,6 +5,10 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoeldeWit.FootballManager.Domain", "RoeldeWit.FootballManager.Domain\RoeldeWit.FootballManager.Domain.csproj", "{A5054572-E4BD-4BA9-8788-B4871C8174FC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoeldeWit.FootballManager.SqlDataAccess", "RoeldeWit.FootballManager.SqlDataAccess\RoeldeWit.FootballManager.SqlDataAccess.csproj", "{17CDEB96-83E1-4003-8698-79B863A8E69A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoeldeWit.FootballManager.Web", "RoeldeWit.FootballManager.Web\RoeldeWit.FootballManager.Web.csproj", "{C202DFF9-0614-45BC-832A-97AF303447E9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{A5054572-E4BD-4BA9-8788-B4871C8174FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5054572-E4BD-4BA9-8788-B4871C8174FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5054572-E4BD-4BA9-8788-B4871C8174FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17CDEB96-83E1-4003-8698-79B863A8E69A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17CDEB96-83E1-4003-8698-79B863A8E69A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17CDEB96-83E1-4003-8698-79B863A8E69A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17CDEB96-83E1-4003-8698-79B863A8E69A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C202DFF9-0614-45BC-832A-97AF303447E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C202DFF9-0614-45BC-832A-97AF303447E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C202DFF9-0614-45BC-832A-97AF303447E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C202DFF9-0614-45BC-832A-97AF303447E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
