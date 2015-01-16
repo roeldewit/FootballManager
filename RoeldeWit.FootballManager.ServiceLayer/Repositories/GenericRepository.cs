@@ -1,11 +1,10 @@
-﻿using System;
+﻿using RoeldeWit.FootballManager.Domain.Classes;
+using RoeldeWit.FootballManager.ServiceLayer.Interfaces;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using RoeldeWit.FootballManager.Domain.Classes;
-using RoeldeWit.FootballManager.ServiceLayer.Interfaces;
 
 namespace RoeldeWit.FootballManager.ServiceLayer.Repositories
 {
@@ -15,13 +14,28 @@ namespace RoeldeWit.FootballManager.ServiceLayer.Repositories
     public class GenericRepository : IGenericRepository
     {
         /// <summary>
+        /// DbContext to use
+        /// </summary>
+        protected DbContext Context;
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        /// <param name="dbContext"></param>
+        public GenericRepository(DbContext dbContext)
+        {
+            Context = dbContext;
+        }
+
+        /// <summary>
         /// Get all entities
         /// </summary>
         /// <typeparam name="TEntity">Entity type</typeparam>
         /// <returns>All entities</returns>
         public IQueryable<TEntity> GetAll<TEntity>() where TEntity : EntityBase, new()
         {
-            throw new NotImplementedException();
+            IQueryable<TEntity> query = Context.Set<TEntity>();
+            return query;
         }
 
         /// <summary>
@@ -32,7 +46,8 @@ namespace RoeldeWit.FootballManager.ServiceLayer.Repositories
         /// <returns>Found entities</returns>
         public IQueryable<TEntity> FindBy<TEntity>(Expression<Func<TEntity, bool>> predicate) where TEntity : EntityBase, new()
         {
-            throw new NotImplementedException();
+            IQueryable<TEntity> query = Context.Set<TEntity>().Where(predicate);
+            return query;
         }
 
         /// <summary>
@@ -42,7 +57,8 @@ namespace RoeldeWit.FootballManager.ServiceLayer.Repositories
         /// <returns>Collection of all entities</returns>
         public IEnumerable<TEntity> ListAll<TEntity>() where TEntity : EntityBase, new()
         {
-            throw new NotImplementedException();
+            IEnumerable<TEntity> result = GetAll<TEntity>().ToList();
+            return result;
         }
 
         /// <summary>
@@ -53,7 +69,8 @@ namespace RoeldeWit.FootballManager.ServiceLayer.Repositories
         /// <returns>Entity</returns>
         public TEntity Details<TEntity>(int id) where TEntity : EntityBase, new()
         {
-            throw new NotImplementedException();
+            TEntity entity = GetAll<TEntity>().FirstOrDefault(item => item.Id == id);
+            return entity;
         }
 
         /// <summary>
@@ -63,7 +80,7 @@ namespace RoeldeWit.FootballManager.ServiceLayer.Repositories
         /// <param name="entity">Entity</param>
         public void Insert<TEntity>(TEntity entity) where TEntity : EntityBase, new()
         {
-            throw new NotImplementedException();
+            Context.Set<TEntity>().Add(entity);
         }
 
         /// <summary>
@@ -73,7 +90,7 @@ namespace RoeldeWit.FootballManager.ServiceLayer.Repositories
         /// <param name="entities">Collection of entities</param>
         public void InsertRange<TEntity>(IEnumerable<TEntity> entities) where TEntity : EntityBase, new()
         {
-            throw new NotImplementedException();
+            Context.Set<TEntity>().AddRange(entities);
         }
 
         /// <summary>
@@ -83,7 +100,7 @@ namespace RoeldeWit.FootballManager.ServiceLayer.Repositories
         /// <param name="entity">Entity</param>
         public void Update<TEntity>(TEntity entity) where TEntity : EntityBase, new()
         {
-            throw new NotImplementedException();
+            Context.Entry(entity).State = EntityState.Modified;
         }
 
         /// <summary>
@@ -93,7 +110,10 @@ namespace RoeldeWit.FootballManager.ServiceLayer.Repositories
         /// <param name="entities">Collection of entities</param>
         public void UpdateRange<TEntity>(IEnumerable<TEntity> entities) where TEntity : EntityBase, new()
         {
-            throw new NotImplementedException();
+            foreach (TEntity entity in entities)
+            {
+                Update(entity);
+            }
         }
 
         /// <summary>
@@ -103,7 +123,10 @@ namespace RoeldeWit.FootballManager.ServiceLayer.Repositories
         /// <param name="id">Id</param>
         public void Delete<TEntity>(int id) where TEntity : EntityBase, new()
         {
-            throw new NotImplementedException();
+            TEntity entity = Details<TEntity>(id);
+
+            if (entity != null)
+                Delete(entity);
         }
 
         /// <summary>
@@ -113,7 +136,7 @@ namespace RoeldeWit.FootballManager.ServiceLayer.Repositories
         /// <param name="entity">Entity</param>
         public void Delete<TEntity>(TEntity entity) where TEntity : EntityBase, new()
         {
-            throw new NotImplementedException();
+            Context.Set<TEntity>().Remove(entity);
         }
 
         /// <summary>
@@ -123,7 +146,7 @@ namespace RoeldeWit.FootballManager.ServiceLayer.Repositories
         /// <param name="entities">Collection of entities</param>
         public void DeleteRange<TEntity>(IEnumerable<TEntity> entities) where TEntity : EntityBase, new()
         {
-            throw new NotImplementedException();
+            Context.Set<TEntity>().RemoveRange(entities);
         }
 
         /// <summary>
@@ -131,7 +154,7 @@ namespace RoeldeWit.FootballManager.ServiceLayer.Repositories
         /// </summary>
         public void Save()
         {
-            throw new NotImplementedException();
+            Context.SaveChanges();
         }
     }
 }
