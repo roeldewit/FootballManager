@@ -1,0 +1,22 @@
+﻿@using RoeldeWit.FootballManager.Domain.Entities
+@model RoeldeWit.FootballManager.Web.Models.IndexCountryViewModel
+
+<h2>Countries</h2>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <td><strong>Id</strong></td>
+            <td><strong>Name</strong></td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Country country in Model.Countries)
+        {
+            <tr>
+                <td>@country.Id</td>
+                <td>@Html.ActionLink(country.Name, "Details", "Country", new { id = country.Id }, null)</td>
+            </tr>
+        }
+    </tbody>
+</table>
