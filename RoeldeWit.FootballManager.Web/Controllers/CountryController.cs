@@ -5,10 +5,14 @@ using System.Web;
 using System.Web.Mvc;
 using RoeldeWit.FootballManager.Domain.Entities;
 using RoeldeWit.FootballManager.ServiceLayer.Repositories;
+using RoeldeWit.FootballManager.ServiceLayer.Services;
 using RoeldeWit.FootballManager.Web.Models;
 
 namespace RoeldeWit.FootballManager.Web.Controllers
 {
+    /// <summary>
+    /// CountryController
+    /// </summary>
     public class CountryController : Controller
     {
         private FootballRepository _footballRepository;
@@ -22,7 +26,10 @@ namespace RoeldeWit.FootballManager.Web.Controllers
             set { _footballRepository = value; }
         }
 
-        // GET: Country
+        /// <summary>
+        /// Index view with all countries
+        /// </summary>
+        /// <returns>Index view</returns>
         public ActionResult Index()
         {
             IEnumerable<Country> countries = FootballRepository.ListAll<Country>();
@@ -35,6 +42,11 @@ namespace RoeldeWit.FootballManager.Web.Controllers
             return View(viewModel);
         }
 
+        /// <summary>
+        /// Get details for a specific country
+        /// </summary>
+        /// <param name="id">Id</param>
+        /// <returns>Details view</returns>
         public ActionResult Details(int id)
         {
             Country country = FootballRepository.Details<Country>(id);
@@ -46,6 +58,17 @@ namespace RoeldeWit.FootballManager.Web.Controllers
             };
 
             return View(viewModel);
+        }
+
+        /// <summary>
+        /// Update all countries in the database
+        /// </summary>
+        /// <returns>Redirect to Index action</returns>
+        public ActionResult Update()
+        {
+            CountryService.UpdateCountries();
+
+            return RedirectToAction("Index", "Country");
         }
     }
 }
