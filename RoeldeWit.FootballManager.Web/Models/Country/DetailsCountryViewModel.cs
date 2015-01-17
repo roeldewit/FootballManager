@@ -9,6 +9,11 @@ namespace RoeldeWit.FootballManager.Web.Models
     public class DetailsCountryViewModel
     {
         /// <summary>
+        /// Id
+        /// </summary>
+        public int Id { get; set; }
+
+        /// <summary>
         /// Name
         /// </summary>
         public string Name { get; set; }

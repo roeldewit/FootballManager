@@ -1,0 +1,36 @@
+﻿@model RoeldeWit.FootballManager.Web.Models.LeagueViewModel
+
+<h2>Create league</h2>
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        @Html.HiddenFor(model => model.CountryId)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+        <br />
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NumberOfTeams)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.NumberOfTeams, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.NumberOfTeams)
+        </div>
+        <br />
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Founded)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Founded, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Founded)
+        </div>
+        <br />
+        <input class="btn btn-default" type="submit" value="Save" />
+    </fieldset>
+}

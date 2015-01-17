@@ -50,11 +50,13 @@ namespace RoeldeWit.FootballManager.Web.Controllers
         public ActionResult Details(int id)
         {
             Country country = FootballRepository.Details<Country>(id);
+            var leagues = FootballRepository.FindBy<League>(league => league.CountryId == id);
 
             DetailsCountryViewModel viewModel = new DetailsCountryViewModel
             {
+                Id = id,
                 Name = country.Name,
-                Leagues = country.Leagues
+                Leagues = leagues
             };
 
             return View(viewModel);

@@ -7,7 +7,7 @@ namespace RoeldeWit.FootballManager.Domain.Entities
     /// <summary>
     /// League entity
     /// </summary>
-    public sealed class League : EntityBase
+    public class League : EntityBase
     {
         /// <summary>
         /// Default constructor
@@ -41,5 +41,15 @@ namespace RoeldeWit.FootballManager.Domain.Entities
         /// Current champion
         /// </summary>
         public Club CurrentChampion { get; set; }
+
+        /// <summary>
+        /// Country id
+        /// </summary>
+        public int CountryId { get; set; }
+
+        /// <summary>
+        /// Country
+        /// </summary>
+        public virtual Country Country { get; set; }
     }
 }
